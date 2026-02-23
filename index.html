@@ -139,7 +139,7 @@
 
         <!-- 輸入區 -->
         <div class="main-container p-6 md:p-10 mb-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                 <div class="space-y-2">
                     <label class="text-[11px] font-bold text-stone-400 tracking-widest uppercase">身分證字號 / ID CARD</label>
                     <input type="text" id="idCard" placeholder="例：A123456789" class="input-field w-full px-4 py-3 rounded-xl uppercase text-lg">
@@ -158,6 +158,11 @@
                 <div class="space-y-2">
                     <label class="text-[11px] font-bold text-stone-400 tracking-widest uppercase">手機號碼 / MOBILE</label>
                     <input type="tel" id="phone" placeholder="" class="input-field w-full px-4 py-3 rounded-xl text-lg">
+                </div>
+                <!-- 新增車牌號碼欄位 -->
+                <div class="space-y-2">
+                    <label class="text-[11px] font-bold text-stone-400 tracking-widest uppercase">車牌號碼 / LICENSE PLATE</label>
+                    <input type="text" id="carPlate" placeholder="例：ABC-1234" class="input-field w-full px-4 py-3 rounded-xl text-lg uppercase">
                 </div>
             </div>
             
@@ -210,96 +215,23 @@
         };
 
         const deepAnalysisDB = {
-            "五鬼": {
-                feature: "反應敏捷、才華橫溢、點子多，具有獨特的直覺力。但性格多疑且難以捉摸，容易陷入焦慮與不安全感。",
-                career: "適合變動性高、需要創意的產業。工作中常有奇招，但容易因心態不穩而頻繁換工作。",
-                wealth: "財運大起大落，容易有偏財或投機之財，但也容易因突發狀況導致破財。",
-                health: "注意心臟血管、突發性高血壓。女性需注意婦科與神經衰弱。",
-                love: "感情多波折，易有地下情或多角戀。對伴侶缺乏信任感，容易猜忌。",
-                interpersonal: "社交能力佳但知心朋友少。與人交往常帶防衛心，容易招惹小人。",
-                family: "與家人關係較疏離，容易因過於堅持見或情緒起伏大而產生隔閡。",
-                jobs: "廣告、音樂、繪畫、藝術家、命理研究、演藝經紀、企劃執行、美術設計、美髮美容、飯店經營、房地產、建築、空姐、作家、音樂創作人、餐飲、酒店、仲介公司。"
-            },
-            "絕命": {
-                feature: "敢拼敢衝、重情重義、好勝心強。脾氣直接且暴躁，行事極端，容易大起大落。",
-                career: "具備強大開拓力與執行力。適合擔任前線作戰人員或高風險決策者。",
-                wealth: "財富容易快速累積也快速流失。投資風格大膽，容易陷入官非賠償或資金缺口。",
-                health: "注意肝腎功能、意外血光之災。情緒起伏大易導致精神緊張。",
-                love: "愛恨分明，對感情投入極深 but 容易給對方壓迫感。分手後容易反目。",
-                interpersonal: "雖然重義氣但性格太衝，容易得罪人。與朋友相處時常有意見不合、火爆爭執。",
-                family: "在家中較為強勢，與父母或另一半容易有正面的激烈衝突。",
-                jobs: "政商幕僚、企劃總監、創意公司、行銷顧問、自營創業者、證券期貨、外科醫師、賽車手、攝影師、編劇、行銷、軍事家、產品包裝設計、娛樂傳播策劃。"
-            },
-            "六煞": {
-                feature: "感性細膩、極具親和力、審美力卓越。處理人際關係圓滑，但優柔寡斷且容易受情緒牽絆。",
-                career: "適合與人交涉、服務性質或美學相關行業。職場上容易因人際困擾而影響效率。",
-                wealth: "適合靠人脈、美感或仲介賺錢。但財運易受感情或情緒波動影響，守財不易。",
-                health: "敏感體質，易有皮膚病、腸胃問題。心理健康需特別關注，易有憂鬱傾向。",
-                love: "異性緣極佳，正桃花少偏桃花多。感情世界豐富但也容易因此心累、糾纏不清。",
-                interpersonal: "社交高手，但在朋友圈中容易成為八卦中心或被小人嫉妒。",
-                family: "非常依賴家庭，但也最容易因為家庭瑣事或婆媳關係感到壓力。",
-                jobs: "設計、藝術品、珠寶古董、公關傳播、演員、小說創作、形象顧問、美容美髮、服裝設計、精品零售、汽車房產仲介、花藝、時尚產業。"
-            },
-            "禍害": {
-                feature: "口才極佳、說服力強，天生靠嘴吃飯。但心直口快、愛面子，容易逞口舌之快而損人不利己。",
-                career: "適合演講、教學或法律等工作。雖然能力強，但常因專心不夠或爭執而得罪主管或下屬。",
-                wealth: "財運與口才有正相關，利於靠嘴賺錢。但容易因口舌是非導致意外破財或罰款。",
-                health: "呼吸系統最弱，需注意喉嚨、肺部、淋巴及胸腔部位。",
-                love: "在感情中愛說教，常因言語衝突傷害伴侶自尊，導致感情失和。",
-                interpersonal: "朋友不少但容易口角。容易因「言多必失」招來不必要的是非紛爭。",
-                family: "在家中愛嘮叨，雖然本意是關心，但口說能量會影響家庭氛圍。",
-                jobs: "業務開發、演說家、歌手、律師、教師、補教顧問、客服人員、節目主持人、談判專家、導遊。"
-            },
-            "天醫": {
-                feature: "聰明睿智、天性善良，具備高度智慧與慈悲心。是上天眷顧的磁場，正能量強。",
-                career: "工作中充滿智慧，能輕鬆掌握核心，容易升遷並獲得主管信任。",
-                wealth: "代表正財與財源。錢財來的理所當然，容易有中大獎或獲得豐厚獎金的機會。",
-                health: "主要需注意血壓及心血管問題。中老年人防高血壓，青少年防低血壓。",
-                love: "代表正桃花。單身者易遇到真命天子；已婚者生活美滿甜蜜。",
-                interpersonal: "人緣極佳，處處受人喜愛。性格溫和，能化解衝突，是大家心中的和事佬。",
-                family: "家庭生活和諧穩定。對家庭極具責任感，能與成員間維持深厚情感。",
-                jobs: "創業當老闆、政府高階官員、總裁、教育家、金融家、程式設計、珠寶設計、金融投資顧問、人力仲介、土地代書、圖書經銷、通訊器材創新型產業。"
-            },
-            "延年": {
-                feature: "領導力強、責任心重、非常有主見。處事專業、懂得自律與節流，是大將之才。",
-                career: "職場上的大將之風。能力卓越，但工作壓力大，常有勞心勞力之感。",
-                wealth: "守財能力第一名。財富多靠專業能力獲取，且能透過精準的開支控制累積財富。",
-                health: "精神壓力巨大。需注意失眠、掉髮、頸椎腰椎痠痛。心臟負荷亦重。",
-                love: "在感情中較強勢，容易主導一切。雖然不夠浪漫，但對伴侶忠誠度與責任感最高。",
-                interpersonal: "有領導威信與固執。在團體中常是決策者，但有時因太硬派而與人產生對立。",
-                family: "家中支柱。管得很寬，對家人要求高，雖然辛苦但深得家人信賴。",
-                jobs: "軍事將領、企業主、保險顧問、直銷主管、心理諮商師、企業顧問、醫師、管理專才、企劃統籌、執行製作、品牌經營、園藝家、作家、經紀人。"
-            },
-            "生氣": {
-                feature: "樂天知命、凡事豁達，貴人運極強。心態年輕，具有極佳的抗壓性與適應力。",
-                career: "職場貴人多，常能逢凶化吉。適合服務業或需要強大社交能力的部門。",
-                wealth: "財源廣進。常有意外之財或貴人相助，但對錢財看太輕，不容易守財。",
-                health: "大致良好，但需注意腸胃系統，且容易因為應酬過多導致體力透支。",
-                love: "對感情態度隨緣，相處氣氛輕鬆愉快。但有時過於被動，缺乏火熱的激情。",
-                interpersonal: "人見人愛，左右逢源。善於化小人為貴人，是社交圈的潤滑劑。",
-                family: "是家中的開心果，能帶動和諧氣氛。與長輩、晚輩溝通無礙。",
-                jobs: "政治家、大規模企業主、心靈教育講師／諮商師、探險家、土地開發、建設業者、室內設計師、建築設計師、導演、軟體設計師、工程監督、資訊創意產業、廣告行銷、企劃整理相關工作。"
-            },
-            "伏位": {
-                feature: "有耐心、觀察力強、行事穩健且保守。內斂且不愛冒險，喜歡穩定的環境。",
-                career: "適合重複性高、需要細心的穩定工作。不喜歡大變動，缺乏果斷的決斷力。",
-                wealth: "財運穩定。收入來源多為固定工資，偏好儲蓄，不適合高風險投資。",
-                health: "注意心臟功能及隱形病灶。長期心理壓抑容易導致慢性能量損耗。",
-                love: "感情慢熱且被動。對伴侶依賴度高，雖然細水長流，但缺乏生活驚喜。",
-                interpersonal: "社交中較為低調，是很好的傾聽者。雖然不主動，但與人相處穩健、可靠。",
-                family: "是家庭中的穩壓器。凡事以和為貴，對家庭傳統與秩序有很強的堅持。",
-                jobs: "店面經營、研究員、行政營運主管、會計統計、分析師、機械物理工程、公務員、教師、數據整理、內勤穩定職位。"
-            }
+            "五鬼": { feature: "反應敏捷、才華橫溢、點子多，具有獨特的直覺力。但性格多疑且難以捉摸，容易陷入焦慮與不安全感。", career: "適合變動性高、需要創意的產業。工作中常有奇招，但容易因心態不穩而頻繁換工作。", wealth: "財運大起大落，容易有偏財或投機之財，但也容易因突發狀況導致破財。", health: "注意心臟血管、突發性高血壓。女性需注意婦科與神經衰弱。", love: "感情多波折，易有地下情或多角戀。對伴侶缺乏信任感，容易猜忌。", interpersonal: "社交能力佳但知心朋友少。與人交往常帶防衛心，容易招惹小人。", family: "與家人關係較疏離，容易因過於堅持見或情緒起伏大而產生隔閡。", jobs: "廣告、音樂、繪畫、藝術家、命理研究、演藝經紀、企劃執行、美術設計、美髮美容、飯店經營、房地產、建築、空姐、作家、音樂創作人、餐飲、酒店、仲介公司。" },
+            "絕命": { feature: "敢拼敢衝、重情重義、好勝心強。脾氣直接且暴躁，行事極端，容易大起大落。", career: "具備強大開拓力與執行力。適合擔任前線作戰人員或高風險決策者。", wealth: "財富容易快速累積也快速流失。投資風格大膽，容易陷入官非賠償或資金缺口。", health: "注意肝腎功能、意外血光之災。情緒起伏大易導致精神緊張。", love: "愛恨分明，對感情投入極深 but 容易給對方壓迫感。分手後容易反目。", interpersonal: "雖然重義氣認性格太衝，容易得罪人。與朋友相處時常有意見不合、火爆爭執。", family: "在家中較為強勢，與父母或另一半容易有正面的激烈衝突。", jobs: "政商幕僚、企劃總監、創意公司、行銷顧問、自營創業者、證券期貨、外科醫師、賽車手、攝影師、編劇、行銷、軍事家、產品包裝設計、娛樂傳播策劃。" },
+            "六煞": { feature: "感性細膩、極具親和力、審美力卓越。處理人際關係圓滑，但優柔寡斷且容易受情緒牽絆。", career: "適合與人交涉、服務性質或美學相關行業。職場上容易因人際困擾而影響效率。", wealth: "適合靠人脈、美感或仲介賺錢。但財運易受感情或情緒波動影響，守財不易。", health: "敏感體質，易有皮膚病、腸胃問題。心理健康需特別關注，易有憂鬱傾向。", love: "異性緣極佳，正桃花少偏桃花多。感情世界豐富但也容易因此心累、糾纏不清。", interpersonal: "社交高手，但在朋友圈中容易成為八卦中心或被小人嫉妒。", family: "非常依賴家庭，但也最容易因為家庭瑣事或婆媳關係感到壓力。", jobs: "設計、藝術品、珠寶古董、公關傳播、演員、小說創作、形象顧問、美容美髮、服裝設計、精品零售、汽車房產仲介、花藝、時尚產業。" },
+            "禍害": { feature: "口才極佳、說服力強，天生靠嘴吃飯。但心直口快、愛面子，容易逞口舌之快而損人不利己。", career: "適合演講、教學或法律等工作。雖然能力強，但常因專心不夠或爭執而得罪主管或下屬。", wealth: "財運與口才有正相關，利於靠嘴賺錢。但容易因口舌是非導致意外破財或罰款。", health: "呼吸系統最弱，需注意喉嚨、肺部、淋巴及胸腔部位。", love: "在感情中愛說教，常因言語衝突傷害伴侶自尊，導致感情失和。", interpersonal: "朋友不少但容易口角。容易因「言多必失」招來不必要的是非紛爭。", family: "在家中愛嘮叨，雖然本意是關心，但口說能量會影響家庭氛圍。", jobs: "業務開發、演說家、歌手、律師、教師、補教顧問、客服人員、節目主持人、談判專家、導遊。" },
+            "天醫": { feature: "聰明睿智、天性善良，具備高度智慧與慈悲心。是上天眷顧的磁場，正能量強。", career: "工作中充滿智慧，能輕鬆掌握核心，容易升遷並獲得主管信任。", wealth: "代表正財與財源。錢財來的理所當然，容易有中大獎或獲得豐厚獎金的機會。", health: "主要需注意血壓及心血管問題。中老年人防高血壓，青少年防低血壓。", love: "代表正桃花。單身者易遇到真命天子；已婚者生活美滿甜蜜。", interpersonal: "人緣極佳，處處受人喜愛。性格溫和，能化解衝突，是大家心中的和事佬。", family: "家庭生活和諧穩定。對家庭極具責任感，能與成員間維持深厚情感。", jobs: "創業當老闆、政府高階官員、總裁、教育家、金融家、程式設計、珠寶設計、金融投資顧問、人力仲介、土地代書、圖書經銷、通訊器材創新型產業。" },
+            "延年": { feature: "領導力強、責任心重、非常有主見。處事專業、懂得自律與節流，是大將之才。", career: "職場上的大將之風。能力卓越，但工作壓力大，常有勞心勞力之感。", wealth: "守財能力第一名。財富多靠專業能力獲取，且能透過精準的開支控制累積財富。", health: "精神壓力巨大。需注意失眠、掉髮、頸椎腰椎痠痛。心臟負荷亦重。", love: "在感情中較強勢，容易主導一切。雖然不夠浪漫，但對伴侶忠誠度與責任感最高。", interpersonal: "有領導威信與固執。在團體中常是決策者，但有時因太硬派而與人產生對立。", family: "家中支柱。管得很寬，對家人要求高，雖然辛苦但深得家人信賴。", jobs: "軍事將領、企業主、保險顧問、直銷主管、心理諮商師、企業顧問、醫師、管理專才、企劃統籌、執行製作、品牌經營、園藝家、作家、經紀人。" },
+            "生氣": { feature: "樂天知命、凡事豁達，貴人運極強。心態年輕，具有極佳的抗壓性與適應力。", career: "職場貴人多，常能逢凶化吉。適合服務業或需要強大社交能力的部門。", wealth: "財源廣進。常有意外之財或貴人相助，但對錢財看太輕，不容易守財。", health: "大致良好，但需注意腸胃系統，且容易因為應酬過多導致體力透支。", love: "對感情態度隨緣，相處氣氛輕鬆愉快。但有時過於被動，缺乏火熱的激情。", interpersonal: "人見人愛，左右逢源。善於化小人為貴人，是社交圈的潤滑劑。", family: "是家中的開心果，能帶動和諧氣氛。與長輩、晚輩溝通無礙。", jobs: "政治家、大規模企業主、心靈教育講師／諮商師、探險家、土地開發、建設業者、室內設計師、建築設計師、導演、軟體設計師、工程監督、資訊創意產業、廣告行銷、企劃整理相關工作。" },
+            "伏位": { feature: "有耐心、觀察力強、行事穩健且保守。內斂且不愛冒險，喜歡穩定的環境。", career: "適合重複性高、需要細心的穩定工作。不喜歡大變動，缺乏果斷的決斷力。", wealth: "財運穩定。收入來源多為固定工資，偏好儲蓄，不適合高風險投資。", health: "注意心臟功能及隱形病灶。長期心理壓抑容易導致慢性能量損耗。", love: "感情慢熱且被動。對伴侶依賴度高，雖然細水長流，但缺乏生活驚喜。", interpersonal: "社交中較為低調，是很好的傾聽者。雖然不主動，但與人相處穩健、可靠。", family: "是家庭中的穩壓器。凡事以和為貴，對家庭傳統與秩序有很強的堅持。", jobs: "店面經營、研究員、行政營運主管、會計統計、分析師、機械物理工程、公務員、教師、數據整理、內勤穩定職位。" }
         };
 
-        const alphaMap = { 'A':'01','B':'02','C':'03','D':'04','E':'05','F':'06','G':'07','H':'08','I':'09','J':'10','K':'11','L':'12','M':'13','N':'14','O':'15','P':'16','Q':'17','R':'18','S':'19','T':'20','U':'21','V':'22','W':'23','X':'24','Y':'25','Z':'26' };
+        const alphaMap = { 'A':'1','B':'2','C':'3','D':'4','E':'5','F':'6','G':'7','H':'8','I':'9','J':'10','K':'11','L':'12','M':'13','N':'14','O':'15','P':'16','Q':'17','R':'18','S':'19','T':'20','U':'21','V':'22','W':'23','X':'24','Y':'25','Z':'26' };
 
         function updateLunarDisplay() {
             const y = parseInt(document.getElementById('sYear').value);
             const m = parseInt(document.getElementById('sMonth').value);
             const d = parseInt(document.getElementById('sDay').value);
             const label = document.getElementById('lunarResultText');
-            
             if (y > 1900 && m > 0 && m <= 12 && d > 0 && d <= 31) {
                 try {
                     const solar = Solar.fromYmd(y, m, d);
@@ -335,12 +267,32 @@
             return res.join("");
         }
 
+        // 車牌號碼專用 5 處理規則
+        function applyCarPlateRules(str) {
+            if (!str) return "";
+            let digits = str.split("");
+            let res = [];
+            for (let i = 0; i < digits.length; i++) {
+                if (digits[i] === '5') {
+                    // 頭尾變 0 (伏位)，中間刪除
+                    if (i === 0 || i === digits.length - 1) {
+                        res.push('0');
+                    }
+                    // 中間不做任何事 (即刪除)
+                } else {
+                    res.push(digits[i]);
+                }
+            }
+            return res.join("");
+        }
+
         function handleCalculate() {
             const idVal = document.getElementById('idCard').value.trim().toUpperCase();
             const y = parseInt(document.getElementById('sYear').value);
             const m = parseInt(document.getElementById('sMonth').value);
             const d = parseInt(document.getElementById('sDay').value);
             const phoneVal = document.getElementById('phone').value.trim();
+            const carVal = document.getElementById('carPlate').value.trim().toUpperCase();
 
             const resDiv = document.getElementById('results');
             resDiv.classList.remove('hidden');
@@ -359,12 +311,10 @@
                     const rocYear = lunar.getYear() - 1911;
                     const lunarClean = applyYijingRules(`${rocYear}${lunar.getMonth()}${lunar.getDay()}`);
                     const birthdayGroups = generateGroups(lunarClean);
-                    
                     birthdayGroups.forEach(num => {
                         let s = getStarName(num);
                         if (s !== "其它") birthdayStarCounts[s] = (birthdayStarCounts[s] || 0) + 1;
                     });
-
                     renderBirthdayCards(otherSection, "生日磁場分析(農曆生日)", birthdayGroups);
                 } catch(e) { console.error(e); }
             }
@@ -378,6 +328,14 @@
             if (phoneVal) {
                 const phoneClean = applyYijingRules(phoneVal);
                 renderSimpleCards(otherSection, "📱 手機號碼解析", generateGroups(phoneClean));
+            }
+
+            if (carVal) {
+                // 車牌字母轉數字 (ABC-1234 -> 1231234)
+                let carDigits = carVal.replace(/[A-Z]/g, m => alphaMap[m]).replace(/[^0-9]/g, "");
+                // 處理 5 的規則
+                let finalCar = applyCarPlateRules(carDigits);
+                renderSimpleCards(otherSection, "🚗 車牌號碼解析", generateGroups(finalCar));
             }
 
             window.scrollTo({ top: resDiv.offsetTop - 20, behavior: 'smooth' });
@@ -454,7 +412,6 @@
             processedData.forEach(row => {
                 const color = starDB[row.coreEnergy]?.color || "text-stone-400";
                 const highlightClass = row.isCurrent ? 'current-age-highlight' : '';
-
                 html += `
                     <div class="age-row ${highlightClass}">
                         <div class="age-info-group">
@@ -506,11 +463,7 @@
         }
 
         function openDeepAnalysisMenu() {
-            if (!currentActiveDestinyStar) {
-                alert("請先完成計算。");
-                return;
-            }
-            
+            if (!currentActiveDestinyStar) { alert("請先完成計算。"); return; }
             let html = `
                 <div class="text-center mb-8">
                     <h2 class="text-xl font-bold text-stone-600 tracking-widest">選擇深入解析項目</h2>
@@ -524,7 +477,6 @@
                         </div>
                         <span class="text-stone-300 group-hover:text-stone-500 transition-all">❯</span>
                     </button>
-
                     <button onclick="renderDeepDetail('year')" class="w-full flex items-center justify-between p-6 bg-stone-50 hover:bg-stone-100 border border-stone-100 rounded-2xl transition-all group">
                         <div class="text-left">
                             <div class="text-xs font-bold text-stone-400 uppercase tracking-widest">流年磁場</div>
@@ -534,22 +486,16 @@
                     </button>
                 </div>
             `;
-            
             document.getElementById('modalContent').innerHTML = html;
             document.getElementById('analysisModal').classList.remove('hidden');
         }
 
         function renderDeepDetail(type) {
             const targetStar = type === 'destiny' ? currentActiveDestinyStar : currentActiveYearStar;
-            if (!targetStar || targetStar === "其它") {
-                alert("無對應數據。");
-                return;
-            }
-
+            if (!targetStar || targetStar === "其它") { alert("無對應數據。"); return; }
             const data = deepAnalysisDB[targetStar];
             const colorClass = starDB[targetStar]?.color || "text-stone-600";
             const titlePrefix = type === 'destiny' ? '核心本命' : '當前流年';
-
             let html = `
                 <div class="mb-8">
                     <button onclick="openDeepAnalysisMenu()" class="text-xs font-bold text-stone-400 hover:text-stone-600 mb-4 inline-flex items-center">
@@ -560,13 +506,11 @@
                         <h2 class="text-4xl font-bold mt-2 ${colorClass}">${targetStar}磁場</h2>
                     </div>
                 </div>
-
                 <div class="space-y-6">
                     <div class="analysis-card">
                         <h4 class="text-xs font-bold text-stone-400 mb-2 tracking-widest uppercase">▸ 磁場特性</h4>
                         <p class="text-[14px] text-stone-600 leading-relaxed">${data.feature}</p>
                     </div>
-
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="p-4 border border-stone-100 rounded-xl bg-[#FCFBFA]">
                             <h4 class="text-xs font-bold text-stone-400 mb-2 uppercase">▸ 事業運勢</h4>
@@ -592,23 +536,18 @@
                             <h4 class="text-xs font-bold text-stone-400 mb-2 uppercase">▸ 家庭關係</h4>
                             <p class="text-[13px] text-stone-600 leading-relaxed">${data.family}</p>
                         </div>
-                        
-                        <div class="p-4 border border-stone-100 rounded-xl bg-[#FCFBFA]">
+                        <div class="p-4 border border-stone-100 rounded-xl bg-[#FCFBFA] md:col-span-2">
                             <h4 class="text-xs font-bold text-stone-400 mb-2 uppercase">▸ 適合的工作或行業</h4>
                             <p class="text-[13px] text-stone-600 leading-relaxed">${data.jobs}</p>
                         </div>
                     </div>
                 </div>
-
                 <button onclick="closeModal()" class="w-full mt-10 py-4 bg-stone-100 text-stone-500 rounded-xl font-bold text-sm hover:bg-stone-200 transition-colors">關閉解析報告</button>
             `;
-
             document.getElementById('modalContent').innerHTML = html;
         }
 
-        function closeModal() {
-            document.getElementById('analysisModal').classList.add('hidden');
-        }
+        function closeModal() { document.getElementById('analysisModal').classList.add('hidden'); }
     </script>
 </body>
 </html>
