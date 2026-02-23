@@ -161,7 +161,7 @@
                 </div>
                 <!-- 新增車牌號碼欄位 -->
                 <div class="space-y-2">
-                    <label class="text-[11px] font-bold text-stone-400 tracking-widest uppercase">車牌號碼 / LICENSE PLATE</label>
+                    <label class="text-[11px] font-bold text-stone-400 tracking-widest uppercase">車牌號碼 </label>
                     <input type="text" id="carPlate" placeholder="例：ABC-1234" class="input-field w-full px-4 py-3 rounded-xl text-lg uppercase">
                 </div>
             </div>
@@ -327,7 +327,7 @@
 
             if (phoneVal) {
                 const phoneClean = applyYijingRules(phoneVal);
-                renderSimpleCards(otherSection, "📱 手機號碼解析", generateGroups(phoneClean));
+                renderSimpleCards(otherSection, "手機號碼解析", generateGroups(phoneClean));
             }
 
             if (carVal) {
@@ -335,7 +335,7 @@
                 let carDigits = carVal.replace(/[A-Z]/g, m => alphaMap[m]).replace(/[^0-9]/g, "");
                 // 處理 5 的規則
                 let finalCar = applyCarPlateRules(carDigits);
-                renderSimpleCards(otherSection, "🚗 車牌號碼解析", generateGroups(finalCar));
+                renderSimpleCards(otherSection, "車牌號碼解析", generateGroups(finalCar));
             }
 
             window.scrollTo({ top: resDiv.offsetTop - 20, behavior: 'smooth' });
