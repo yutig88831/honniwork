@@ -105,7 +105,7 @@
             margin-bottom: 2.5rem;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
         }
 
         .star-badge-card {
@@ -225,7 +225,7 @@
                 career: "具備強大開拓力與執行力。適合擔任前線作戰人員或高風險決策者。",
                 wealth: "財富容易快速累積也快速流失。投資風格大膽，容易陷入官非賠償或資金缺口。",
                 health: "注意肝腎功能、意外血光之災。情緒起伏大易導致精神緊張。",
-                love: "愛恨分明，對感情投入極深但容易給對方壓迫感。分手後容易反目。",
+                love: "愛恨分明，對感情投入極深 but 容易給對方壓迫感。分手後容易反目。",
                 interpersonal: "雖然重義氣但性格太衝，容易得罪人。與朋友相處時常有意見不合、火爆爭執。",
                 family: "在家中較為強勢，與父母或另一半容易有正面的激烈衝突。",
                 jobs: "政商幕僚、企劃總監、創意公司、行銷顧問、自營創業者、證券期貨、外科醫師、賽車手、攝影師、編劇、行銷、軍事家、產品包裝設計、娛樂傳播策劃。"
@@ -278,7 +278,7 @@
                 love: "對感情態度隨緣，相處氣氛輕鬆愉快。但有時過於被動，缺乏火熱的激情。",
                 interpersonal: "人見人愛，左右逢源。善於化小人為貴人，是社交圈的潤滑劑。",
                 family: "是家中的開心果，能帶動和諧氣氛。與長輩、晚輩溝通無礙。",
-                jobs: "政治家、大型企業主、心靈諮商、探險家、土地開發、建設業、室內設計、建築設計、導演、軟體設計、廣告行銷、企劃整理工作。"
+                jobs: "政治家、大規模企業主、心靈教育講師／諮商師、探險家、土地開發、建設業者、室內設計師、建築設計師、導演、軟體設計師、工程監督、資訊創意產業、廣告行銷、企劃整理相關工作。"
             },
             "伏位": {
                 feature: "有耐心、觀察力強、行事穩健且保守。內斂且不愛冒險，喜歡穩定的環境。",
@@ -442,10 +442,10 @@
             <div class="main-container p-6 md:p-10">
                 <div class="destiny-banner">
                     <div>
-                        <span class="text-[11px] uppercase font-bold text-stone-400 tracking-widest">核心本命磁場 / CORE ENERGY</span>
+                        <span class="text-[11px] uppercase font-bold text-stone-400 tracking-widest">核心本命磁場</span>
                         <div class="text-3xl font-bold mt-2 ${starDB[destiny]?.color || 'text-stone-600'}">${destiny}</div>
                     </div>
-                    ${userAge ? `<div class="bg-stone-50 px-4 py-2 rounded-lg border border-stone-100 text-stone-500 font-bold text-sm">目前虛歲：${userAge} 歲</div>` : ''}
+                    ${userAge ? `<div class="bg-stone-50 px-5 py-3 rounded-lg border border-stone-100 text-stone-500 font-bold text-sm leading-tight text-center">目前虛歲：<br/>${userAge} 歲</div>` : ''}
                 </div>
                 <h2 class="text-lg font-bold text-stone-600 text-center mb-8 tracking-widest">身分證大運流年表</h2>
                 <div class="max-w-xl mx-auto space-y-0.5">
@@ -562,13 +562,11 @@
                 </div>
 
                 <div class="space-y-6">
-                    <!-- 磁場特性 -->
                     <div class="analysis-card">
                         <h4 class="text-xs font-bold text-stone-400 mb-2 tracking-widest uppercase">▸ 磁場特性</h4>
                         <p class="text-[14px] text-stone-600 leading-relaxed">${data.feature}</p>
                     </div>
 
-                    <!-- 各類運勢 -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="p-4 border border-stone-100 rounded-xl bg-[#FCFBFA]">
                             <h4 class="text-xs font-bold text-stone-400 mb-2 uppercase">▸ 事業運勢</h4>
@@ -595,7 +593,6 @@
                             <p class="text-[13px] text-stone-600 leading-relaxed">${data.family}</p>
                         </div>
                         
-                        <!-- 適合的工作或行業 - 樣式與上述項目統一 -->
                         <div class="p-4 border border-stone-100 rounded-xl bg-[#FCFBFA]">
                             <h4 class="text-xs font-bold text-stone-400 mb-2 uppercase">▸ 適合的工作或行業</h4>
                             <p class="text-[13px] text-stone-600 leading-relaxed">${data.jobs}</p>
